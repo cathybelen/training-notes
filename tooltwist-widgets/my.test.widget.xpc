@@ -1,0 +1,9 @@
+<xpcConfig>
+	<entityType name="my.test.widget.xpc">
+		<description>Provide EDP, get product name</description>
+		<method>
+			<name>get</name>
+			<class>mall.training.xpc.MyTestWidgetXPC</class>
+		</method>
+	</entityType>
+</xpcConfig>

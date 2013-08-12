@@ -1,0 +1,110 @@
+Database Connection is located in 
+MacHD/tooltwist/tooltwist_osx_7.0/Servers/Tomcat v7.0 Server at localhost-config/context.xml
+
+MYLOGINWIDGET
+
+The handler
+File : widgetti > src > mall > training > handler > MyLoginWidgetHandler.java
+Line : 49
+Code : xpc.start("mall.PC.Customers", "VerifyLogin");
+Note : "mall.PC.Customers" is the entity name while "VerifyLogin" is the entity method name
+
+
+Source of entity name and entity method
+File : widgetti > config > conf-xpc > mall.sp.calls.xpc 
+Line : 566-571
+Code : 
+<entityType name="mall.PC.Customers">
+	<description>All Customers related functions go here</description>
+	  <method>
+			<name>VerifyLogin</name>
+			<class>mall.xpc.user.UserVerifyLogin</class>
+	  </method>
+...
+Note : UserVerifyLogin.java is the XPC
+
+
+The XPC / AbstractSPCallPlugin
+File : widgetti > src > mall > xpc > user > UserVerifyLogin.java
+Line : 15 & 18
+Code : 
+	15 : public static final String SP_NAME="dbo.acc_Verify_Login_eSub";
+	18 : mapConnection("mallcustomers");
+Note : "mallcustomers" is the resource name, while "dbo.acc_Verify_Login_eSub" is the sp name
+
+	
+Resource Name
+File : MacHD/tooltwist/tooltwist_osx_7.0/Servers/Tomcat v7.0 Server at localhost-config/context.xml
+Line : 89-103
+Code :  
+						<Resource name="mallcustomers"
+                          auth="Container"
+                          type="javax.sql.DataSource"
+                          removeAbandoned="true"
+                          removeAbandonedTimeout="30"
+                          maxActive="100"
+                          maxIdle="6"
+                          maxWait="10000"
+                          username="stgusrcust"
+                          password="jP5d6yoMkA"
+                          driverClassName="net.sourceforge.jtds.jdbc.Driver"
+                          factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                          url="jdbc:jtds:sqlserver://10.241.3.27:1433;databaseName=MallCustomers;"
+                         validationQuery="select 1"
+                          testOnReturn="true"/>
+	
+	
+
+MYTESTWIDGET
+The handler
+File : widgetti > src > mall > training > handler > MyTestWidgetHandler.java
+Line : 25
+Code : xpc.start("my.test.widget.xpc", "get");
+Note : "my.test.widget.xpc" is the entity name while "get" is the entity method name
+
+Source of entity name and entity method
+File : widgetti > config > conf-xpc > my.test.widget.xpc 
+Code : 
+<xpcConfig>
+	<entityType name="my.test.widget.xpc">
+		<description>Provide EDP, get product name</description>
+		<method>
+			<name>get</name>
+			<class>mall.training.xpc.MyTestWidgetXPC</class>
+		</method>
+	</entityType>
+</xpcConfig>
+Note : MyTestWidgetXPC.java is the XPC
+
+
+The XPC / AbstractSPCallPlugin
+File : widgetti > src > mall > xpc > user > UserVerifyLogin.java
+Line : 14-15
+Code : 
+	mapConnection("ccproduct");
+	mapSP("dbo.usp_prd_GetProductDetails");
+Note : "cc_product" is the resource name, while is the sp name.
+	
+	
+Resource Name
+File : MacHD/tooltwist/tooltwist_osx_7.0/Servers/Tomcat v7.0 Server at localhost-config/context.xml
+Line : 40-56
+Code : 
+						<Resource name="ccproduct"
+                          auth="Container"
+                          type="javax.sql.DataSource"
+                          removeAbandoned="true"
+                          removeAbandonedTimeout="60"
+                          maxActive="110"
+                          maxIdle="50"
+                          maxWait="50000"
+                          testWhileIdle="true"
+                       timeBetweenEvictionRunsMillis="10000"
+                          username="stgusrprod"
+                          password="LUc3Hr8mVk"
+                          driverClassName="net.sourceforge.jtds.jdbc.Driver"
+                          factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                          url="jdbc:jtds:sqlserver://10.241.3.27:1433;databaseName=cc_product;"
+                          validationQuery="select 1"
+                          testOnReturn="true"/>
+                          

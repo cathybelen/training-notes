@@ -1,0 +1,4 @@
+<handler>
+	<class>mall.training.handler.MyLoginWidgetRequestHandler</class>
+	<description>This is the login widget handler</description>
+</handler>

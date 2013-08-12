@@ -1,0 +1,4 @@
+"mall_training" folder should be located in widgetti > widgets
+"training" folder should be located in widgetti > src > mall
+"my.test.widget.xpc" file should be located in widgetti > config > conf-xpc
+

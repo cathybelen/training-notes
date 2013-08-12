@@ -1,0 +1,4 @@
+<handler>
+	<class>mall.training.handler.MyTestWidgetRequestHandler</class>
+	<description>This is my test widget handler</description>
+</handler>

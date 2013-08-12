@@ -1,0 +1,8 @@
+<widget>
+  <widgetType>primitive</widgetType>
+  <widgetClass>mall.training.MyLoginWidget</widgetClass>
+  <editableSnippet>
+    <name>myLoginWidget.css</name>
+    <theme>project</theme>
+  </editableSnippet>
+</widget>
